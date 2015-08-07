@@ -3,7 +3,8 @@
 #On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
-# En, Es, Fa, Ru are all global bot allowed
+# Wikivoyages: En, Es, Fa, Ru are all global bot allowed
+# As of: August 6th, 2015
 # This is meant to run on cron with compaion script
 
 if [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
