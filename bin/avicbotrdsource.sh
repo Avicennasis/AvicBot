@@ -4,6 +4,8 @@
 # As of: August 6th, 2015
 # This is meant to run on cron with compaion script
 
+PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
+
 if [ $1 == "ca" ] || [ $1 == "el" ] || [ $1 == "fa" ] || [ $1 == "it" ] || [ $1 == "ko" ] || [ $1 == "no" ] || [ $1 == "pl" ] || [ $1 == "vi" ] || [ $1 == "zh" ] ; then
 # Try a full scan first
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikisource -always -lang:$1 -namespace:103
