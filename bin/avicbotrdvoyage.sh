@@ -5,7 +5,7 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 
 # Wikivoyages: En, Es, Fa, Ru are all global bot allowed
 # As of: August 6th, 2015
-# This is meant to run on cron with compaion script
+# This is meant to run on cron with companion script
 
 if [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
 # Try a full scan first
