@@ -3,6 +3,7 @@
 #On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
+date >>~/logs/commonsrd.log
 # Try a full scan first
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:1199
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:1198
@@ -65,3 +66,7 @@ python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:com
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:1
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:0
+
+echo "Meta is done" >>~/logs/commonsrd.log
+date >>~/logs/commonsrd.log
+
