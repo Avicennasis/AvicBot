@@ -67,6 +67,6 @@ python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:com
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:1
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:0
 
-echo "Meta is done" >>~/logs/commonsrd.log
+echo "Commons is done" >>~/logs/commonsrd.log
 date >>~/logs/commonsrd.log
 
