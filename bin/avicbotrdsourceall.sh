@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#This is our cron script for redirects 
-#Paths are formatted for Tool Labs
+# This is our cron script for redirects 
+# Paths are formatted for Tool Labs
 
 date >>~/logs/rdsource.log
 ~/.pywikibot/avicbotrdsource.sh ca
@@ -23,3 +23,4 @@ echo "vi done" >>~/logs/rdsource.log
 ~/.pywikibot/avicbotrdsource.sh zh
 echo "zh done" >>~/logs/rdsource.log
 date >>~/logs/rdsource.log
+
