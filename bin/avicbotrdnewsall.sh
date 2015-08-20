@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This is our cron script for redirects 
+# Paths are formatted for Tool Labs
+
 date >>~/logs/rdnews.log
 ~/.pywikibot/avicbotrdnews.sh ar
 echo "ar done" >>~/logs/rdnews.log
