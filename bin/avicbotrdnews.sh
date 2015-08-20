@@ -139,4 +139,3 @@ python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikinew
 # Pull from special page, in case full scan fails
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikinews -always -lang:$1 -namespace:829
 fi
-
