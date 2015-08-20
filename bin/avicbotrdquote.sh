@@ -3,7 +3,7 @@
 #On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
-# Wikiquotes: af, ar, az, be, Bg, br, Bs, ca, Cs, cy, da, el, Eo, Es, et, eu, fa, fi, fr, gl, gu, he, hi, Hu, hy, id, Is, It, ja, Ka, kn, ko, ku, ky, la, li, Lt, ml, mr, nl, Nn, no, Pt, ro, ru, sk, Sl, sq, sr, su, sv, ta, te, Tr, Uk, ur, uz, vi, wo, Zh are all global bot allowed
+# Wikiquotes: Af, Ar, Az, Be, Bg, Br, Bs, Ca, Cs, Cy, Da, El, Eo, Es, Et, Eu, Fa, Fi, Fr, Gl, Gu, He, Hi, Hu, Hy, Id, Is, It, Ja, Ka, Kn, Ko, Ku, Ky, La, Li, Lt, Ml, Mr, Nl, Nn, No, Pt, Ro, Ru, Sk, Sl, Sq, Sr, Su, Sv, Ta, Te, Tr, Uk, Ur, Uz, Vi, Wo, Zh are all global bot allowed
 # As of: August 6th, 2015
 # This is meant to run on cron with companion script
 
