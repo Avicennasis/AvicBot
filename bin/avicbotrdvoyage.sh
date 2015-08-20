@@ -59,3 +59,4 @@ python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoy
 # Pull from special page, in case full scan fails
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:106
 fi
+
