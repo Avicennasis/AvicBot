@@ -3,6 +3,7 @@
 #On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
+date >>~/logs/metard.log
 # Try a full scan first
 python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -fullscan -always -namespace:2600
 python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -fullscan -always -namespace:1199
@@ -81,3 +82,7 @@ python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -
 python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -always -namespace:2
 python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -always -namespace:1
 python /shared/pywikipedia/core/scripts/redirect.py do -family:meta -lang:meta -always -namespace:0
+
+echo "Meta is done" >>~/logs/metard.log
+date >>~/logs/metard.log
+
