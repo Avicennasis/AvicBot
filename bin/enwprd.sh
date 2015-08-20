@@ -3,6 +3,7 @@
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
 date >>~/logs/enwprd.log
+# Try a full scan first
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikipedia -always -lang:en -namespace:2600
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikipedia -always -lang:en -namespace:829
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikipedia -always -lang:en -namespace:828
@@ -63,3 +64,4 @@ python /shared/pywikipedia/core/scripts/redirect.py do -family:wikipedia -always
 
 echo "EnWp is done" >>~/logs/enwprd.log
 date >>~/logs/enwprd.log
+
