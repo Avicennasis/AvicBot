@@ -14,7 +14,7 @@ python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:sh -sub
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:sco -subcats:Wikipaedia_nan-empty_soft_redirectit_categories
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ru -subcats:Переименованные_категории_со_статьями
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ro -subcats:Categorii_de_redirecționare_populate
-python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:pt -subcats:!Redirecionamentos_de_categorias_não_vazios
+python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:pt -subcats:'!Redirecionamentos_de_categorias_não_vazios'
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ko -subcats:비어_있지_않은_분류_넘겨주기
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ilo -subcats:Katkategoria_ti_naalumaymay_a_baw-ing_ti_Wikipedia_nga_adda_linaon
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:fr -subcats:Catégorie_redirigée_non_vide
