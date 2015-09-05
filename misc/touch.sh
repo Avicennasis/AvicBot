@@ -2,7 +2,7 @@
 
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
-# Touch cats to remove the emmpty sub-cats
+# Touch cats to remove the empty sub-cats
 python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -subcats:non-empty_category_redirects
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:zh -subcats:尚未清空的已重定向分類
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:wuu -subcats:含有內容嗰已軟重定向分類
