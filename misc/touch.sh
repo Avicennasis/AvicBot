@@ -22,3 +22,9 @@ python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:es -sub
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:en -subcats:Wikipedia_non-empty_soft_redirected_categories
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ckb -subcats:پۆلە_ڕەوانەکراوە_نەرمە_ناواڵاکان
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:as -subcats:ৱিকিপিডিয়া_খালী_কৰিব_লগীয়া_সৰল_পুনৰ্নিদেশিত_শ্ৰেণীসমূহ
+
+
+# Extra stuff to poke on Commons
+python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -subcats:Incomplete_deletion_requests_-_missing_subpage
+python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -cat:Incomplete_deletion_requests_-_missing_subpage
+
