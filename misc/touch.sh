@@ -23,8 +23,30 @@ python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:en -sub
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:ckb -subcats:پۆلە_ڕەوانەکراوە_نەرمە_ناواڵاکان
 python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:as -subcats:ৱিকিপিডিয়া_খালী_কৰিব_লগীয়া_সৰল_পুনৰ্নিদেশিত_শ্ৰেণীসমূহ
 
-
 # Extra stuff to poke on Commons
 python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -subcats:Incomplete_deletion_requests_-_missing_subpage
 python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -cat:Incomplete_deletion_requests_-_missing_subpage
+
+# Touch cats to force update of admin backlogs
+python /shared/pywikipedia/core/scripts/touch.py -lang:en -family:wikipedia -transcludes:admin_backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:simple -family:wikipedia -transcludes:admin_backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:sa -family:wikipedia -transcludes:admin_backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:ms -family:wikipedia -transcludes:admin_backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:sl -family:wikipedia -transcludes:Adminvseznam -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:vi -family:wikipedia -transcludes:BQV_chú_ý -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:en -family:wikipedia -transcludes:admin_backlog -namespace:14
+
+# Touch cats to force update of backlogs
+python /shared/pywikipedia/core/scripts/touch.py -lang:commons -family:commons -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:en -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:as -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:bn -family:wikipedia -transcludes:জমা_কাজ -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:fa -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:km -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:ms -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:or -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:sl -family:wikipedia -transcludes:Vseznam -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:rh -family:wikipedia -transcludes:backlog -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:ur -family:wikipedia -transcludes:پس_اندراج -namespace:14
+python /shared/pywikipedia/core/scripts/touch.py -lang:zh -family:wikipedia -transcludes:backlog -namespace:14
 
