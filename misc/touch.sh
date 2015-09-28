@@ -26,6 +26,7 @@ python /shared/pywikipedia/core/scripts/touch.py -family:wikipedia -lang:as -sub
 # Extra stuff to poke on Commons
 python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -subcats:Incomplete_deletion_requests_-_missing_subpage
 python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -cat:Incomplete_deletion_requests_-_missing_subpage
+python /shared/pywikipedia/core/scripts/touch.py -family:commons -lang:commons -subcats:Non-empty_disambiguation_categories
 
 # Touch cats to force update of admin backlogs
 python /shared/pywikipedia/core/scripts/touch.py -lang:en -family:wikipedia -transcludes:admin_backlog -namespace:14
