@@ -1,0 +1,55 @@
+# Edit this file to introduce tasks to be run by cron.
+#
+# Each task to run has to be defined through a single line
+# indicating with different fields when the task will be run
+# and what command to run for the task
+#
+# To define the time you can provide concrete values for
+# minute (m), hour (h), day of month (dom), month (mon),
+# and day of week (dow) or use '*' in these fields (for 'any').#
+# Notice that tasks will be started based on the cron's system
+# daemon's notion of time and timezones.
+#
+# Output of the crontab jobs (including errors) is sent through
+# email to the user the crontab file belongs to (unless redirected).
+#
+# For example, you can run a backup of all your user accounts
+# at 5 a.m every week with:
+# 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+#
+# For more information see the manual pages of crontab(5) and cron(8)
+#
+# Wikimedia Tool Labs specific note:
+#   Please be aware that *only* jsub and jstart are acceptable
+#   commands to schedule via cron.  Any command specified here will
+#   be modified to be invoked through jsub unless it is one of
+#   the two.
+
+PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
+
+#
+# m h  dom mon dow   command
+# Misc
+@reboot jsub -quiet ~/.pywikibot/crash.sh
+* * * * * jsub -quiet ~/scripts/clean.sh
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * qsub -o ~/logs/twitter.del -j y  ~/.pywikibot/twitter.sh >/dev/null 2>&1
+0 0,6,12,18 * * * jsub -quiet -once ~/.pywikibot/mysandboxes.sh
+0 * * * * jstart -mem 2g ~/irc/avicbotirc.sh
+#46 * * * *    jsub ~/irc/restart2.sh
+# Redirects
+0,30 * * * * jsub -quiet -once ~/.pywikibot/metard.sh >/dev/null 2>&1
+0,30 * * * * jsub -quiet -once ~/.pywikibot/commonsrd.sh >/dev/null 2>&1
+0,30 * * * * jsub -N rdallvoy -quiet -once ~/.pywikibot/avicbotrdvoyageall.sh >/dev/null 2>&1
+0,30 * * * * jsub -N rdallsource -quiet -once ~/.pywikibot/avicbotrdsourceall.sh >/dev/null 2>&1
+0,30 * * * * jsub -N rdallnews -quiet -once ~/.pywikibot/avicbotrdnewsall.sh >/dev/null 2>&1
+0,30 * * * * jsub -N rdallquote -quiet -once ~/.pywikibot/avicbotrdquoteall.sh >/dev/null 2>&1
+0 0,2,4,6,8,10,12,14,16,18,20,22 * * * jsub -quiet -once ~/.pywikibot/enwprd.sh >/dev/null 2>&1
+#EnWp work
+* 0,12 * * * jsub -quiet -once ~/.pywikibot/categories.sh >/dev/null 2>&1
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/uaaby5min.sh
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/csd.sh
+0,30 * * * * jsub -quiet -once ~/.pywikibot/uaareport.sh
+#Commons and stuff
+0 * * * * jsub -quiet -once ~/.pywikibot/touch.sh >/dev/null 2>&1
+#Database stuff
+0 * * * * jsub -quiet -once ~/dbq/enorphans.sh >/dev/null 2>&1
