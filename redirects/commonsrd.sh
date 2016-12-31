@@ -1,14 +1,23 @@
 #!/bin/bash
 
-#On Tool Labs
+# On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
 date >>~/logs/commonsrd.log
 # Try a full scan first
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:2600
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:2303
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:2302
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:2301
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:2300
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:1199
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:1198
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:829
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:828
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:491
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:490
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:487
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:486
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:461
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:460
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:107
@@ -36,10 +45,17 @@ python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:com
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:1
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -fullscan -always -namespace:0
 # Pull from special page, in case full scan fails
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2600
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2303
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2302
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2301
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:2300
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:1199
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:1198
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:491
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:490
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:487
+python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:486
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:461
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:460
 python /shared/pywikipedia/core/scripts/redirect.py do -family:commons -lang:commons -always -namespace:107
