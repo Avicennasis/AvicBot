@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#On Tool Labs
+# On Tool Labs
 PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
 
-# Wikivoyages: En, Es, Fa, Ru are all global bot allowed
-# As of: August 6th, 2015
+# Wikivoyages: El, En, Es, Fa, Ru are all global bot allowed
+# As of: December 31, 2016
 # This is meant to run on cron with companion script
 
 if [ $1 == "el" ] || [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
