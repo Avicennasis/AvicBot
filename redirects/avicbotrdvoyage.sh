@@ -7,7 +7,7 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 # As of: August 6th, 2015
 # This is meant to run on cron with companion script
 
-if [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
+if [ $1 == "el" ] || [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
 # Try a full scan first
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:828
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:15
