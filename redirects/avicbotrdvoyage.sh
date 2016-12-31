@@ -9,6 +9,12 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 
 if [ $1 == "el" ] || [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
 # Try a full scan first
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2600
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2303
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2302
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2301
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2300
+python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:829
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:828
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:15
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:14
@@ -27,6 +33,12 @@ python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoy
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:1
 python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:0
 # Pull from special page, in case full scan fails
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2600
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2303
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2302
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2301
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2300
+python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:829
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:828
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:15
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:14
@@ -59,4 +71,3 @@ python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoy
 # Pull from special page, in case full scan fails
 python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:106
 fi
-
