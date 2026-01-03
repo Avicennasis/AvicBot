@@ -1,73 +1,120 @@
 #!/bin/bash
+# =============================================================================
+# avicbotrdvoyage.sh - Wikivoyage Redirect Fixer
+# =============================================================================
+#
+# Fixes broken and double redirects on Wikivoyage wikis. This script processes
+# redirects across multiple namespaces for a single language edition.
+#
+# Wikivoyage is a free travel guide that anyone can edit.
+#
+# Global Bot-Approved Languages (5 total, as of December 2016):
+#   el, en, es, fa, ru
+#
+# Usage:
+#   $ ./avicbotrdvoyage.sh en    # Process English Wikivoyage
+#   $ ./avicbotrdvoyage.sh ru    # Process Russian Wikivoyage
+#
+# Environment: Wikimedia Toolforge
+# Requirements: Pywikibot installed and configured
+#
+# Author: Léon "Avic" Simmons
+# License: MIT License
+# Originally written: 2016 | Modernized: 2026
+# =============================================================================
 
-# On Tool Labs
-PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:/shared/pywikipedia/core/scripts
+set -euo pipefail
 
-# Wikivoyages: El, En, Es, Fa, Ru are all global bot allowed
-# As of: December 31, 2016
-# This is meant to run on cron with companion script
+# =============================================================================
+# Configuration
+# =============================================================================
 
-if [ $1 == "el" ] || [ $1 == "en" ] || [ $1 == "es" ] || [ $1 == "fa" ] || [ $1 == "ru" ] ; then
-# Try a full scan first
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2600
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2303
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2302
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2301
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2300
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:829
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:828
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:15
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:14
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:13
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:12
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:11
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:10
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:9
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:8
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:7
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:6
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:5
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:4
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:3
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:2
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:1
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:0
-# Pull from special page, in case full scan fails
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2600
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2303
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2302
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2301
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2300
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:829
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:828
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:15
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:14
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:13
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:12
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:11
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:10
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:9
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:8
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:7
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:6
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:5
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:4
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:3
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:2
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:1
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:0
-fi
+readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
+readonly REDIRECT_SCRIPT="${PYWIKIBOT_DIR}/scripts/redirect.py"
+readonly FAMILY="wikivoyage"
 
-if [ $1 == "en" ] || [ $1 == "es" ]  ; then
-# Try a full scan first
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:829
-# Pull from special page, in case full scan fails
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:829
-fi
+# =============================================================================
+# Language Support
+# =============================================================================
 
-if [ $1 == "fa" ] ; then
-# Try a full scan first
-python /shared/pywikipedia/core/scripts/redirect.py -fullscan do -family:wikivoyage -always -lang:$1 -namespace:106
-# Pull from special page, in case full scan fails
-python /shared/pywikipedia/core/scripts/redirect.py do -family:wikivoyage -always -lang:$1 -namespace:106
-fi
+readonly CORE_LANGS="el en es fa ru"
+readonly NS829_LANGS="en es"
+readonly NS106_LANGS="fa"
+
+# =============================================================================
+# Helper Functions
+# =============================================================================
+
+log_info() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] INFO: $*"
+}
+
+log_error() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] ERROR: $*" >&2
+}
+
+contains_lang() {
+    local lang="$1"
+    local list="$2"
+    [[ " ${list} " =~ " ${lang} " ]]
+}
+
+run_redirect() {
+    local lang="$1"
+    local namespace="$2"
+    
+    local base_args="${REDIRECT_SCRIPT} -family:${FAMILY} -always -lang:${lang} -namespace:${namespace}"
+    
+    python ${base_args} -fullscan do || true
+    python ${base_args} do || true
+}
+
+# =============================================================================
+# Main Script
+# =============================================================================
+
+main() {
+    local lang="${1:-}"
+    
+    if [[ -z "${lang}" ]]; then
+        log_error "Usage: $0 <language_code>"
+        exit 1
+    fi
+    
+    log_info "=========================================="
+    log_info "Wikivoyage Redirect Fixer - ${lang}"
+    log_info "=========================================="
+    
+    # Core namespaces (all Wikivoyages)
+    if contains_lang "${lang}" "${CORE_LANGS}"; then
+        log_info "Processing all namespaces..."
+        
+        # Special Wikivoyage namespaces first
+        for ns in 2600 2303 2302 2301 2300 829 828; do
+            run_redirect "${lang}" "${ns}"
+        done
+        
+        # Standard MediaWiki namespaces
+        for ns in 15 14 13 12 11 10 9 8 7 6 5 4 3 2 1 0; do
+            run_redirect "${lang}" "${ns}"
+        done
+    fi
+    
+    # Module talk namespace (en, es only)
+    if contains_lang "${lang}" "${NS829_LANGS}"; then
+        log_info "Processing Module talk namespace (829)..."
+        run_redirect "${lang}" 829
+    fi
+    
+    # Persian-specific namespace
+    if contains_lang "${lang}" "${NS106_LANGS}"; then
+        log_info "Processing Persian-specific namespace (106)..."
+        run_redirect "${lang}" 106
+    fi
+    
+    log_info "=========================================="
+    log_info "✓ Completed Wikivoyage ${lang}"
+    log_info "=========================================="
+}
+
+main "$@"

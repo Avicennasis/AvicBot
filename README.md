@@ -96,6 +96,38 @@ Monitors usernames with possible policy violations (UAA reports). The `uaaby5min
 ./enwp/uaaby5min.sh
 ```
 
+---
+
+### redirects/ - Redirect Maintenance Scripts
+
+A comprehensive suite of scripts for fixing broken and double redirects across multiple Wikimedia projects and languages.
+
+**Single-Wiki Scripts:**
+These scripts process redirects for a specific language edition (or project).
+- `avicbotrdnews.sh`: Wikinews
+- `avicbotrdquote.sh`: Wikiquote
+- `avicbotrdsource.sh`: Wikisource
+- `avicbotrdvoyage.sh`: Wikivoyage
+- `commonsrd.sh`: Wikimedia Commons
+- `enwprd.sh`: English Wikipedia
+- `metard.sh`: Meta-Wiki
+
+**Orchestrator Scripts:**
+These scripts run via cron to trigger the single-wiki scripts for all supported languages sequentially.
+- `avicbotrdnewsall.sh`
+- `avicbotrdquoteall.sh`
+- `avicbotrdsourceall.sh`
+- `avicbotrdvoyageall.sh`
+
+**Usage Example:**
+```bash
+# Fix redirects on English Wikinews
+./redirects/avicbotrdnews.sh en
+
+# Run the full Wikinews batch job
+./redirects/avicbotrdnewsall.sh
+```
+
 ## Installation
 
 1. Clone this repository:
