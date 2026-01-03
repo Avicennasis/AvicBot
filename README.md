@@ -62,6 +62,40 @@ python misc/mysandboxes.py -delay:10
 python misc/mysandboxes.py -family:wikipedia -lang:en
 ```
 
+---
+
+### enwp/ - English Wikipedia Scripts
+
+Shell scripts for generating category listings on English Wikipedia. Designed to run on Wikimedia Toolforge.
+
+#### categories.sh
+
+Generates lists from multiple Wikipedia categories including blocked users (spam/advertising), misplaced drafts, and AfC submissions.
+
+```bash
+./enwp/categories.sh
+```
+
+#### csd.sh
+
+Lists all pages currently marked as candidates for speedy deletion.
+
+```bash
+./enwp/csd.sh
+```
+
+#### uaareport.sh / uaaby5min.sh
+
+Monitors usernames with possible policy violations (UAA reports). The `uaaby5min.sh` variant runs more frequently for active monitoring.
+
+```bash
+# Standard report (30-minute interval)
+./enwp/uaareport.sh
+
+# Frequent update (5-minute interval)
+./enwp/uaaby5min.sh
+```
+
 ## Installation
 
 1. Clone this repository:
