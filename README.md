@@ -128,6 +128,24 @@ These scripts run via cron to trigger the single-wiki scripts for all supported 
 ./redirects/avicbotrdnewsall.sh
 ```
 
+### misc/ - Miscellaneous Maintenance
+
+Helper scripts for various bot tasks.
+- `allfine.py`: Twitter status bot (modernized with Tweepy).
+- `mysandboxes.py`: Core logic for resetting sandboxes.
+- `crash.sh`: Notifications on server restart.
+- `mysandboxes.sh`: Language orchestrator for sandbox cleaning.
+- `touch.sh`: Performs null-edits on categories to force cache updates for backlogs.
+
+---
+
+### scripts/ - System Utilities
+
+- `clean.sh`: Robust log cleaner.
+- `monitor.sh`: Job queue monitor (Legacy Grid Engine/Toolforge).
+
+---
+
 ## Installation
 
 1. Clone this repository:
