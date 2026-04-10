@@ -32,7 +32,7 @@ License: MIT License
 import os
 import sys
 from datetime import datetime, timezone
-from typing import NoReturn
+
 
 # =============================================================================
 # Attempt to import the tweepy library for X/Twitter API access.
@@ -40,7 +40,7 @@ from typing import NoReturn
 # =============================================================================
 try:
     import tweepy
-except ImportError as e:
+except ImportError:
     print("Error: The 'tweepy' library is required but not installed.")
     print("Please install it using: pip install tweepy")
     sys.exit(1)
@@ -181,7 +181,7 @@ def main() -> None:
     status_message = f"All Systems Go! {timestamp}"
 
     # Step 4: Post the status update
-    print(f"\nPosting status update...")
+    print("\nPosting status update...")
     post_status_update(client, status_message)
 
     print("\nDone!")
