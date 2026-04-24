@@ -1,5 +1,12 @@
 # AvicBot
 
+[![CI](https://github.com/Avicennasis/AvicBot/actions/workflows/test.yml/badge.svg)](https://github.com/Avicennasis/AvicBot/actions/workflows/test.yml)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/Avicennasis/AvicBot/badge)](https://scorecard.dev/viewer/?uri=github.com/Avicennasis/AvicBot)
+[![Release](https://img.shields.io/github/v/release/Avicennasis/AvicBot?display_name=tag)](https://github.com/Avicennasis/AvicBot/releases)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit)](https://github.com/pre-commit/pre-commit)
+[![PRs welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 A collection of Python scripts for Wikipedia/Wikimedia automation using the [Pywikibot](https://www.mediawiki.org/wiki/Manual:Pywikibot) framework.
 
 ## Overview

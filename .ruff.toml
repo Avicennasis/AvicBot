@@ -1,0 +1,16 @@
+line-length = 120
+
+[lint]
+# Enable default rules + flake8-bandit security checks (S rule group).
+# The S IDs are the same numbers as bandit's B IDs (flake8-bandit is
+# ruff's upstream).
+extend-select = ["S"]
+
+ignore = [
+    "S603",  # subprocess without shell=True
+    "S404",  # importing subprocess
+    "S101",  # use of assert
+]
+
+[lint.per-file-ignores]
+"__pycache__/**" = ["ALL"]
