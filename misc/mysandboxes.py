@@ -253,10 +253,7 @@ class SandboxBot(SingleSiteBot):
         # Validate that we have content for this wiki
         wiki_code = self.site.code
         if wiki_code not in SANDBOX_CONTENT and not config.text:
-            pywikibot.error(
-                f"No default content defined for {wiki_code}, "
-                f"and no -text argument provided. Exiting."
-            )
+            pywikibot.error(f"No default content defined for {wiki_code}, and no -text argument provided. Exiting.")
             raise RuntimeError(f"No content for wiki: {wiki_code}")
 
         # Set up the page generator
@@ -265,16 +262,11 @@ class SandboxBot(SingleSiteBot):
         else:
             # Use default sandbox titles for this wiki
             if wiki_code not in SANDBOX_TITLES:
-                pywikibot.error(
-                    f"No sandbox titles defined for {wiki_code}. Exiting."
-                )
+                pywikibot.error(f"No sandbox titles defined for {wiki_code}. Exiting.")
                 raise RuntimeError(f"No sandbox titles for wiki: {wiki_code}")
 
             # Create Page objects for each sandbox title
-            self.generator = [
-                pywikibot.Page(self.site, title)
-                for title in SANDBOX_TITLES[wiki_code]
-            ]
+            self.generator = [pywikibot.Page(self.site, title) for title in SANDBOX_TITLES[wiki_code]]
 
     def _get_clean_content(self) -> str:
         """
@@ -339,10 +331,7 @@ class SandboxBot(SingleSiteBot):
 
         if uses_subst and page.latest_revision.user == self.site.user():
             # Bot made the last edit with substituted content - likely clean
-            pywikibot.output(
-                "  → Sandbox may be clean (substituted content by bot). "
-                "Skipping."
-            )
+            pywikibot.output("  → Sandbox may be clean (substituted content by bot). Skipping.")
             return False, None
 
         # Check if content starts with expected text (may have additions below)
@@ -365,8 +354,7 @@ class SandboxBot(SingleSiteBot):
                 minutes_ago = edit_delta.total_seconds() / 60
                 wait_seconds = int(remaining.total_seconds())
                 pywikibot.output(
-                    f"  → Sandbox was edited {minutes_ago:.1f} minutes ago. "
-                    f"Waiting {wait_seconds // 60} minutes."
+                    f"  → Sandbox was edited {minutes_ago:.1f} minutes ago. Waiting {wait_seconds // 60} minutes."
                 )
                 return False, f"wait:{wait_seconds}"
 
@@ -387,10 +375,7 @@ class SandboxBot(SingleSiteBot):
 
         # Handle redirect pages
         if page.isRedirectPage():
-            pywikibot.warning(
-                f"  {page.title(as_link=True)} is a redirect. "
-                f"Cleaning it anyway."
-            )
+            pywikibot.warning(f"  {page.title(as_link=True)} is a redirect. Cleaning it anyway.")
 
         try:
             # Get the content we want to set
@@ -467,15 +452,9 @@ class SandboxBot(SingleSiteBot):
             if not waited:
                 sleep_seconds = self.config.hours * 3600
                 if self.config.hours < 1.0:
-                    pywikibot.output(
-                        f"\nSleeping {self.config.hours * 60:.0f} minutes "
-                        f"until next cycle..."
-                    )
+                    pywikibot.output(f"\nSleeping {self.config.hours * 60:.0f} minutes until next cycle...")
                 else:
-                    pywikibot.output(
-                        f"\nSleeping {self.config.hours:.1f} hours "
-                        f"until next cycle..."
-                    )
+                    pywikibot.output(f"\nSleeping {self.config.hours:.1f} hours until next cycle...")
                 time.sleep(sleep_seconds)
 
 
