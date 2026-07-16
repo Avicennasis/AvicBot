@@ -1,4 +1,22 @@
- Edit this file to introduce tasks to be run by cron.                                                                                                                
+# =============================================================================
+# DECOMMISSIONED — Toolforge Grid Engine (jsub/jstart) has been shut off.
+# =============================================================================
+# The Wikimedia Toolforge Grid Engine was deprecated and removed:
+#   https://wikitech.wikimedia.org/wiki/News/Toolforge_Grid_Engine_deprecation
+# Every job below is scheduled via `jsub`/`jstart`, which no longer exist, so
+# NONE of these entries currently run. This file is retained only as a record
+# of the historical schedule to inform a future migration to Toolforge Jobs
+# (toolforge-jobs / Kubernetes CronJobs).
+#
+# Note also that several referenced scripts live only on the deployment host
+# and are not part of this repository (e.g. twitter.sh, ~/irc/avicbotirc.sh,
+# frwprd.sh, trwprd.sh, arwprd.sh, scocatrd.sh, sandboxsco.sh, comcsd.sh,
+# simplewpcsd.sh, simplewprd.sh, cfd.sh, ~/dbq/*.sh), and a few deployed under
+# different names than the repo (enwpcategories.sh -> enwp/categories.sh,
+# enwpcsd.sh -> enwp/csd.sh).
+# =============================================================================
+
+# Edit this file to introduce tasks to be run by cron.                                                                                                                
 #                                                                                                                                                                     
 # Each task to run has to be defined through a single line                                                                                                            
 # indicating with different fields when the task will be run                                                                                                          
