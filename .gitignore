@@ -1,1 +1,5 @@
 .stargazer-context.json
+
+# Python build artifacts
+__pycache__/
+*.py[cod]
