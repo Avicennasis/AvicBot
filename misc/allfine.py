@@ -182,7 +182,13 @@ def main() -> None:
 
     # Step 4: Post the status update
     print("\nPosting status update...")
-    post_status_update(client, status_message)
+    try:
+        post_status_update(client, status_message)
+    except tweepy.TweepyException:
+        # post_status_update already reported the error before re-raising.
+        # Exit non-zero so cron surfaces the failure instead of emitting an
+        # unhandled traceback.
+        sys.exit(1)
 
     print("\nDone!")
 

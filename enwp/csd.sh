@@ -39,7 +39,7 @@ readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
 readonly CATEGORY_SCRIPT="${PYWIKIBOT_DIR}/scripts/category.py"
 
 # Wiki and category settings
-readonly WIKI_ARGS="-family:wikipedia -lang:en"
+readonly WIKI_ARGS=(-family:wikipedia -lang:en)
 readonly SOURCE_CATEGORY="Candidates_for_speedy_deletion"
 readonly TARGET_PAGE="User:AvicBot/speedy"
 
@@ -74,7 +74,7 @@ main() {
     # -to: specifies the target page for the generated list
     # -overwrite: replaces existing content on the target page
     
-    if python "${CATEGORY_SCRIPT}" ${WIKI_ARGS} listify \
+    if python "${CATEGORY_SCRIPT}" "${WIKI_ARGS[@]}" listify \
         -from:"${SOURCE_CATEGORY}" \
         -to:"${TARGET_PAGE}" \
         -overwrite; then

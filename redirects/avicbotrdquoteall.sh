@@ -29,7 +29,15 @@ set -euo pipefail
 # Configuration
 # =============================================================================
 
-readonly REDIRECT_SCRIPT="${HOME}/.pywikibot/avicbotrdquote.sh"
+# Prefer the copy alongside this orchestrator (repo layout); fall back to the
+# ~/.pywikibot/ Toolforge deployment path for backward compatibility.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+readonly SCRIPT_DIR
+if [[ -x "${SCRIPT_DIR}/avicbotrdquote.sh" ]]; then
+    readonly REDIRECT_SCRIPT="${SCRIPT_DIR}/avicbotrdquote.sh"
+else
+    readonly REDIRECT_SCRIPT="${HOME}/.pywikibot/avicbotrdquote.sh"
+fi
 readonly LOG_FILE="${HOME}/logs/rdquote.log"
 
 # All global-bot-approved Wikiquote languages (alphabetically sorted)
@@ -78,10 +86,10 @@ main() {
         
         if "${REDIRECT_SCRIPT}" "${lang}" >> "${LOG_FILE}" 2>&1; then
             log_message "  ✓ ${lang} done"
-            ((success_count++))
+            success_count=$((success_count + 1))
         else
             log_message "  ✗ ${lang} failed"
-            ((failure_count++))
+            failure_count=$((failure_count + 1))
         fi
     done
     

@@ -42,7 +42,7 @@ readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
 readonly CATEGORY_SCRIPT="${PYWIKIBOT_DIR}/scripts/category.py"
 
 # Common arguments for all category.py calls
-readonly WIKI_ARGS="-family:wikipedia -lang:en"
+readonly WIKI_ARGS=(-family:wikipedia -lang:en)
 
 # =============================================================================
 # Helper Functions
@@ -73,7 +73,7 @@ run_listify() {
     
     log_info "Processing: ${from_category} -> ${to_page}"
     
-    if python "${CATEGORY_SCRIPT}" ${WIKI_ARGS} listify \
+    if python "${CATEGORY_SCRIPT}" "${WIKI_ARGS[@]}" listify \
         -from:"${from_category}" \
         -to:"${to_page}" \
         -overwrite; then
@@ -108,23 +108,23 @@ main() {
     
     if run_listify "Wikipedians_who_are_indefinitely_blocked_for_link-spamming" \
                    "User:AvicBot/linkspam"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     if run_listify "Wikipedians_who_are_indefinitely_blocked_for_spamming" \
                    "User:AvicBot/spam"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     if run_listify "Wikipedians_who_are_indefinitely_blocked_for_advertising" \
                    "User:AvicBot/advertising"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     # -------------------------------------------------------------------------
@@ -137,23 +137,23 @@ main() {
     
     if run_listify "Misplaced_userspace_drafts" \
                    "User:AvicBot/drafts2"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     if run_listify "G13_eligible_AfC_submissions" \
                    "User:AvicBot/G13"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     if run_listify "AfC_postponed_G13" \
                    "User:AvicBot/postponed"; then
-        ((success_count++))
+        success_count=$((success_count + 1))
     else
-        ((failure_count++))
+        failure_count=$((failure_count + 1))
     fi
     
     # -------------------------------------------------------------------------

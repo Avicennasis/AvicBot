@@ -84,7 +84,7 @@ from pywikibot import i18n, pagegenerators
 from pywikibot.bot import SingleSiteBot
 
 if TYPE_CHECKING:
-    from collections.abc import Iterator
+    from collections.abc import Iterable
     from pywikibot.page import BasePage
 
 # =============================================================================
@@ -234,7 +234,7 @@ class SandboxBot(SingleSiteBot):
     def __init__(
         self,
         config: SandboxBotConfig,
-        generator: Iterator[BasePage] | None = None,
+        generator: Iterable[BasePage] | None = None,
         **kwargs,
     ) -> None:
         """
@@ -258,7 +258,11 @@ class SandboxBot(SingleSiteBot):
 
         # Set up the page generator
         if generator:
-            self.generator = generator
+            # Materialize the external generator into a list so it can be
+            # re-iterated on every cycle in continuous mode. A bare iterator
+            # would be exhausted by the first list() call in run(), leaving
+            # subsequent cycles with nothing to process.
+            self.generator = list(generator)
         else:
             # Use default sandbox titles for this wiki
             if wiki_code not in SANDBOX_TITLES:
@@ -361,7 +365,7 @@ class SandboxBot(SingleSiteBot):
         # Page needs cleaning and delay has passed
         return True, None
 
-    def _process_single_page(self, page: BasePage) -> bool:
+    def _process_single_page(self, page: BasePage) -> int:
         """
         Process a single sandbox page.
 
@@ -369,7 +373,10 @@ class SandboxBot(SingleSiteBot):
             page: The Page object to process
 
         Returns:
-            True if we should wait before processing more pages
+            The number of seconds to wait before this page may be cleaned, or
+            0 if the page was fully handled (cleaned, skipped, or errored).
+            A positive value signals the caller to defer this page and move on
+            rather than blocking the whole queue with an inline sleep.
         """
         pywikibot.output(f"\nProcessing: {page.title(as_link=True)}")
 
@@ -386,10 +393,9 @@ class SandboxBot(SingleSiteBot):
             should_clean, wait_info = self._should_clean_page(page, clean_content)
 
             if wait_info and wait_info.startswith("wait:"):
-                # Extract wait time and sleep
-                wait_seconds = int(wait_info.split(":")[1])
-                time.sleep(wait_seconds)
-                return True  # Signal that we waited
+                # Defer instead of sleeping inline so the remaining pages keep
+                # processing; the caller retries deferred pages afterwards.
+                return int(wait_info.split(":")[1])
 
             if should_clean:
                 # Show diff and save
@@ -408,7 +414,7 @@ class SandboxBot(SingleSiteBot):
         except pywikibot.exceptions.LockedPageError:
             pywikibot.error(f"  Page {page.title()} is protected. Skipping.")
 
-        return False
+        return 0
 
     def run(self) -> None:
         """
@@ -434,28 +440,47 @@ class SandboxBot(SingleSiteBot):
             now = datetime.now(timezone.utc).strftime("%Y-%m-%d %H:%M:%S UTC")
             pywikibot.output(f"\n--- Starting cycle at {now} ---")
 
-            waited = False
+            # First pass: process every page, deferring any that are still
+            # inside their post-edit delay window instead of blocking inline.
+            deferred: list[tuple[BasePage, int]] = []
+            for page in list(self.generator):
+                wait_seconds = self._process_single_page(page)
+                if wait_seconds > 0:
+                    deferred.append((page, wait_seconds))
 
-            # Process each sandbox page
-            # Convert generator to list to allow re-iteration
-            pages = list(self.generator)
-            for page in pages:
-                if self._process_single_page(page):
-                    waited = True
+            # Second pass: retry deferred pages once their delay elapses.
+            # Sleep only for the shortest outstanding delay each round so no
+            # page is blocked longer than necessary. The shortest-wait page is
+            # cleaned (or dropped) each round, so this loop always terminates.
+            while deferred:
+                wait_seconds = min(w for _, w in deferred)
+                pywikibot.output(f"\nWaiting {wait_seconds // 60} minute(s) for {len(deferred)} deferred page(s)...")
+                time.sleep(wait_seconds)
+
+                pending = deferred
+                deferred = []
+                for page, prev_wait in pending:
+                    retry_wait = self._process_single_page(page)
+                    if 0 < retry_wait <= prev_wait:
+                        # Window is still counting down as expected (this page
+                        # simply had a longer delay than the one we slept for).
+                        deferred.append((page, retry_wait))
+                    # retry_wait == 0: handled. retry_wait > prev_wait: the page
+                    # was edited again while we waited, so leave it for the next
+                    # cycle rather than blocking the queue here.
 
             # Check if we should repeat
             if self.config.no_repeat:
                 pywikibot.output("\n✓ Done (one-shot mode).")
                 return
 
-            # Sleep until next cycle (if we didn't wait during processing)
-            if not waited:
-                sleep_seconds = self.config.hours * 3600
-                if self.config.hours < 1.0:
-                    pywikibot.output(f"\nSleeping {self.config.hours * 60:.0f} minutes until next cycle...")
-                else:
-                    pywikibot.output(f"\nSleeping {self.config.hours:.1f} hours until next cycle...")
-                time.sleep(sleep_seconds)
+            # Sleep until the next cycle.
+            sleep_seconds = self.config.hours * 3600
+            if self.config.hours < 1.0:
+                pywikibot.output(f"\nSleeping {self.config.hours * 60:.0f} minutes until next cycle...")
+            else:
+                pywikibot.output(f"\nSleeping {self.config.hours:.1f} hours until next cycle...")
+            time.sleep(sleep_seconds)
 
 
 # =============================================================================
