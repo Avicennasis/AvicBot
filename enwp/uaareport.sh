@@ -42,7 +42,7 @@ readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
 readonly CATEGORY_SCRIPT="${PYWIKIBOT_DIR}/scripts/category.py"
 
 # Wiki and category settings
-readonly WIKI_ARGS="-family:wikipedia -lang:en"
+readonly WIKI_ARGS=(-family:wikipedia -lang:en)
 readonly SOURCE_CATEGORY="Wikipedia_usernames_with_possible_policy_issues"
 readonly TARGET_PAGE="User:Avicennasis/reports/uaa/report"
 
@@ -76,7 +76,7 @@ main() {
     # This generates a wikitext list of all pages in the category
     # and saves it to the target user page
     
-    if python "${CATEGORY_SCRIPT}" ${WIKI_ARGS} listify \
+    if python "${CATEGORY_SCRIPT}" "${WIKI_ARGS[@]}" listify \
         -from:"${SOURCE_CATEGORY}" \
         -to:"${TARGET_PAGE}" \
         -overwrite; then
