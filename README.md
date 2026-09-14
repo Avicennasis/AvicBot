@@ -153,6 +153,15 @@ Helper scripts for various bot tasks.
 
 ---
 
+## Pywikibot location
+
+The scripts read `PYWIKIBOT_DIR` and default to the standard Toolforge install.
+If Pywikibot lives elsewhere, override it for a run (FR-238):
+
+```bash
+PYWIKIBOT_DIR=/path/to/pywikibot ./enwp/csd.sh
+```
+
 ## Linting
 
 `pre-commit run --all-files` runs ruff lint + format plus hygiene hooks. The
