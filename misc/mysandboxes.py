@@ -471,7 +471,7 @@ class SandboxBot(SingleSiteBot):
 
             # Check if we should repeat
             if self.config.no_repeat:
-                pywikibot.output("\n✓ Done (one-shot mode).")
+                pywikibot.output("\n[done] Done (one-shot mode).")
                 return
 
             # Sleep until the next cycle.
