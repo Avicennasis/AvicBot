@@ -155,8 +155,8 @@ Helper scripts for various bot tasks.
 
 ## Pywikibot location
 
-The scripts read `PYWIKIBOT_DIR` and default to the standard Toolforge install.
-If Pywikibot lives elsewhere, override it for a run (FR-238):
+The scripts read `PYWIKIBOT_DIR` and otherwise use their configured default.
+Override it when Pywikibot lives elsewhere (FR-238):
 
 ```bash
 PYWIKIBOT_DIR=/path/to/pywikibot ./enwp/csd.sh
