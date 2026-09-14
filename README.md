@@ -163,7 +163,7 @@ Helper scripts for various bot tasks.
 
 2. Install dependencies:
    ```bash
-   pip install tweepy pywikibot
+   pip install -r requirements.txt
    ```
 
 3. Configure Pywikibot by running:
