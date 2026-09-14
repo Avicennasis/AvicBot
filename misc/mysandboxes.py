@@ -327,7 +327,7 @@ class SandboxBot(SingleSiteBot):
 
         # Check if already clean
         if current_text == expected_text:
-            pywikibot.output("  → Sandbox is already clean, no change needed.")
+            pywikibot.output("  -> Sandbox is already clean, no change needed.")
             return False, None
 
         # Check for substitution (subst:) in content
@@ -335,7 +335,7 @@ class SandboxBot(SingleSiteBot):
 
         if uses_subst and page.latest_revision.user == self.site.user():
             # Bot made the last edit with substituted content - likely clean
-            pywikibot.output("  → Sandbox may be clean (substituted content by bot). Skipping.")
+            pywikibot.output("  -> Sandbox may be clean (substituted content by bot). Skipping.")
             return False, None
 
         # Check if content starts with expected text (may have additions below)
@@ -358,7 +358,7 @@ class SandboxBot(SingleSiteBot):
                 minutes_ago = edit_delta.total_seconds() / 60
                 wait_seconds = int(remaining.total_seconds())
                 pywikibot.output(
-                    f"  → Sandbox was edited {minutes_ago:.1f} minutes ago. Waiting {wait_seconds // 60} minutes."
+                    f"  -> Sandbox was edited {minutes_ago:.1f} minutes ago. Waiting {wait_seconds // 60} minutes."
                 )
                 return False, f"wait:{wait_seconds}"
 
@@ -403,7 +403,7 @@ class SandboxBot(SingleSiteBot):
                 page.text = clean_content
                 pywikibot.showDiff(old_text, clean_content)
                 page.save(summary=edit_summary)
-                pywikibot.output("  ✓ Sandbox cleaned successfully.")
+                pywikibot.output("  [done] Sandbox cleaned successfully.")
 
         except pywikibot.exceptions.EditConflictError:
             pywikibot.warning("  Edit conflict! Will retry on next cycle.")
@@ -471,7 +471,7 @@ class SandboxBot(SingleSiteBot):
 
             # Check if we should repeat
             if self.config.no_repeat:
-                pywikibot.output("\n✓ Done (one-shot mode).")
+                pywikibot.output("\n[done] Done (one-shot mode).")
                 return
 
             # Sleep until the next cycle.
