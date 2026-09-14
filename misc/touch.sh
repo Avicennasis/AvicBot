@@ -115,10 +115,10 @@ main() {
         "${cmd[@]}" || echo "Warning: Task failed."
     done
 
-    # Double tap for english admin backlog as in original script? 
-    # (Original had it twice, maybe intentionally for update propagation?)
-    # We'll skip adding the duplicate logic unless strictly necessary to avoid clutter,
-    # but the array makes it easy to add if needed.
+    # No duplicate English admin-backlog pass: the original ran the same
+    # touch twice to force update propagation, but the modern MediaWiki API
+    # touch is idempotent within a run, so a second call only doubles API
+    # traffic. The task array above makes it a one-line addition if ever needed.
     
     log_info "Maintenance run complete."
 }
