@@ -141,7 +141,7 @@ Helper scripts for various bot tasks.
 - `allfine.py`: Twitter status bot (modernized with Tweepy).
 - `mysandboxes.py`: Core logic for resetting sandboxes.
 - `crash.sh`: Notifications on server restart.
-- `mysandboxes.sh`: Language orchestrator for sandbox cleaning.
+- `mysandboxes.sh`: Multi-wiki orchestrator that runs `mysandboxes.py` for each configured wiki (English/Esperanto/Scots/Simple Wikipedia, Commons, Meta).
 - `touch.sh`: Performs null-edits on categories to force cache updates for backlogs.
 
 ---
@@ -152,6 +152,12 @@ Helper scripts for various bot tasks.
 - `monitor.sh`: Job queue monitor (Legacy Grid Engine/Toolforge).
 
 ---
+
+## Linting
+
+`pre-commit run --all-files` runs ruff lint + format plus hygiene hooks. The
+ruff config in `.ruff.toml` enables the `S` (flake8-bandit) security rule group,
+so contributors should run it before opening a PR.
 
 ## Installation
 
