@@ -7,5 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-10
+
 ### Added
-- Initial project scaffolding.
+- 2026 modernization: every shell and Python script rewritten and hardened
+  (`set -euo pipefail`, quoted expansions, shared helpers), with GitHub Actions
+  CI, pre-commit, ruff (including the `S` security rule group), `.editorconfig`,
+  and release-drafter.
+
+### Changed
+- Legacy Toolforge Grid Engine (`jsub`/`jstart`) scheduling retired; the
+  `crontab` is now a historical record pending migration to Toolforge Jobs.
