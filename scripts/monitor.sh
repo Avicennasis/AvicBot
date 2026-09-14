@@ -26,11 +26,6 @@ if ! command -v qstat &> /dev/null; then
     exit 1
 fi
 
-while true; do
-    clear
-    echo "=== Job Queue Monitor ==="
-    echo "Time: $(date)"
-    echo "========================="
-    qstat
-    sleep 1
-done
+# Use `watch` instead of an unbounded 1-second loop: it redraws on a sane
+# interval and exits cleanly on Ctrl-C / SIGTERM (FR-282).
+exec watch -n 5 qstat
