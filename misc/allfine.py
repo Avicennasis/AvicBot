@@ -147,8 +147,8 @@ def post_status_update(client: tweepy.Client, message: str) -> None:
         print(f"Successfully posted tweet (ID: {tweet_id})")
         print(f"Message: {message}")
 
-    except tweepy.TweepyException as e:
-        print(f"Error posting tweet: {e}")
+    except tweepy.TweepyException:
+        # Let the caller report it once, cleanly (FR-234) — no double printing.
         raise
 
 
@@ -184,10 +184,10 @@ def main() -> None:
     print("\nPosting status update...")
     try:
         post_status_update(client, status_message)
-    except tweepy.TweepyException:
-        # post_status_update already reported the error before re-raising.
-        # Exit non-zero so cron surfaces the failure instead of emitting an
-        # unhandled traceback.
+    except tweepy.TweepyException as e:
+        # Single clean report, then exit non-zero so cron surfaces the failure
+        # instead of emitting an unhandled traceback (FR-234).
+        print(f"Error posting tweet: {e}", file=sys.stderr)
         sys.exit(1)
 
     print("\nDone!")
