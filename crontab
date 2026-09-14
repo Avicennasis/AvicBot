@@ -50,8 +50,8 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 # Misc                                                                                                                                                                
 @reboot jsub -quiet ~/.pywikibot/crash.sh                                                                                                                             
                                                                                                                                                                       
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet ~/scripts/clean.sh                                                                                              
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet ~/.pywikibot/twitter.sh >/dev/null 2>&1                                                                         
+*/5 * * * * jsub -quiet ~/scripts/clean.sh
+*/5 * * * * jsub -quiet ~/.pywikibot/twitter.sh >/dev/null 2>&1
 0 0,6,12,18 * * * jsub -quiet -once ~/.pywikibot/mysandboxes.sh                                                                                                       
 0 * * * * jstart -mem 2g ~/irc/avicbotirc.sh                                                                                                                          
 #46 * * * *    jsub ~/irc/restart2.sh                                                                                                                                 
@@ -61,7 +61,7 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 0,30 * * * * jsub -N rdallsource -quiet -once ~/.pywikibot/avicbotrdsourceall.sh >/dev/null 2>&1                                                                      
 0,30 * * * * jsub -N rdallnews -quiet -once ~/.pywikibot/avicbotrdnewsall.sh >/dev/null 2>&1                                                                          
 0,30 * * * * jsub -N rdallquote -quiet -once ~/.pywikibot/avicbotrdquoteall.sh >/dev/null 2>&1                                                                        
-0 0,2,4,6,8,10,12,14,16,18,20,22 * * * jsub -quiet -once ~/.pywikibot/enwprd.sh >/dev/null 2>&1                                                                       
+0 */2 * * * jsub -quiet -once ~/.pywikibot/enwprd.sh >/dev/null 2>&1
 0 * * * * jsub -quiet -once ~/.pywikibot/frwprd.sh >/dev/null 2>&1                                                                                                    
 1 * * * * jsub -quiet -once ~/.pywikibot/trwprd.sh >/dev/null 2>&1                                                                                                    
 2 * * * * jsub -quiet -once ~/.pywikibot/arwprd.sh >/dev/null 2>&1                                                                                                    
@@ -71,14 +71,14 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 #EnWp work                                                                                                                                                            
 0 1,3,5,7,9,11,13,15,17,19,21,23 * * * jsub -quiet -once ~/.pywikibot/enwprd.sh >/dev/null 2>&1                                                                       
 * 0,12 * * * jsub -quiet -once ~/.pywikibot/enwpcategories.sh >/dev/null 2>&1                                                                                         
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/uaaby5min.sh                                                                                 
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/enwpcsd.sh                                                                                   
+*/5 * * * * jsub -quiet -once ~/.pywikibot/uaaby5min.sh
+*/5 * * * * jsub -quiet -once ~/.pywikibot/enwpcsd.sh
 0,30 * * * * jsub -quiet -once ~/.pywikibot/uaareport.sh                                                                                                              
 0 * * * * jsub -quiet -once ~/.pywikibot/cfd.sh >/dev/null 2>&1                                                                                                       
                                                                                                                                                                       
                                                                                                                                                                       
 #ScoWp                                                                                                                                                                
-0,15,30,45 * * * * jsub -quiet -once ~/.pywikibot/sandboxsco.sh                                                                                                       
+*/15 * * * * jsub -quiet -once ~/.pywikibot/sandboxsco.sh
 0 12 * * * jsub -quiet -once ~/.pywikibot/scocatrd.sh                                                                                                                 
                                                                                                                                                                       
                                                                                                                                                                       
@@ -86,11 +86,11 @@ PYTHONPATH=/shared/pywikipedia/core:/shared/pywikipedia/core/externals/httplib2:
 0 * * * * jsub -quiet -once ~/.pywikibot/touch.sh >/dev/null 2>&1                                                                                                     
                                                                                                                                                                       
 #Commons work                                                                                                                                                         
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/comcsd.sh                                                                                    
+*/5 * * * * jsub -quiet -once ~/.pywikibot/comcsd.sh
 0,30 * * * * jsub -quiet -once ~/.pywikibot/commonsrd.sh >/dev/null 2>&1                                                                                              
                                                                                                                                                                       
 #SimpleWP work                                                                                                                                                        
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * jsub -quiet -once ~/.pywikibot/simplewpcsd.sh                                                                               
+*/5 * * * * jsub -quiet -once ~/.pywikibot/simplewpcsd.sh
 0 * * * * jsub -quiet -once ~/.pywikibot/simplewprd.sh >/dev/null 2>&1                                                                                                
                                                                                                                                                                       
 #Database stuff                                                                                                                                                       
