@@ -38,7 +38,9 @@ set -euo pipefail  # Exit on error, undefined vars, and pipe failures
 
 # Path to Pywikibot installation on Toolforge
 # Update this path if your Pywikibot installation is in a different location
-readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
+# Modern Toolforge keeps pywikibot under $HOME/pywikibot; override with the
+# PYWIKIBOT_DIR env var (FR-233/238).
+readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-${HOME}/pywikibot}"
 readonly CATEGORY_SCRIPT="${PYWIKIBOT_DIR}/scripts/category.py"
 
 # Common arguments for all category.py calls

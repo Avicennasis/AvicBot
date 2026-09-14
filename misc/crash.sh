@@ -23,7 +23,9 @@ set -euo pipefail
 # Configuration
 # =============================================================================
 
-readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
+# Modern Toolforge keeps pywikibot under $HOME/pywikibot; override with the
+# PYWIKIBOT_DIR env var (FR-233/238).
+readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-${HOME}/pywikibot}"
 readonly ADD_TEXT_SCRIPT="${PYWIKIBOT_DIR}/scripts/add_text.py"
 
 readonly FAMILY="wikipedia"
