@@ -23,7 +23,7 @@ set -euo pipefail
 # Configuration
 # =============================================================================
 
-readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-/shared/pywikipedia/core}"
+readonly PYWIKIBOT_DIR="${PYWIKIBOT_DIR:-${HOME}/pywikibot}"
 readonly TOUCH_SCRIPT="${PYWIKIBOT_DIR}/scripts/touch.py"
 
 # =============================================================================
